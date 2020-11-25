@@ -9,12 +9,12 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'realm-android'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 30
 
     defaultConfig {
         applicationId "vn.impl.projectbase"
-        minSdkVersion 21
-        targetSdkVersion 28
+        minSdkVersion 23
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -30,8 +30,8 @@ android {
         abortOnError false
     }
 
-    dataBinding {
-        enabled = false
+    buildFeatures {
+        dataBinding false
     }
 
     buildTypes {

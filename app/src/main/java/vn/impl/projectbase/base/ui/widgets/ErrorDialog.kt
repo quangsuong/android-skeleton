@@ -2,11 +2,11 @@ package vn.impl.projectbase.base.ui.widgets
 
 import android.content.Context
 import android.view.LayoutInflater
+import kotlinx.android.synthetic.main.dialog_error.*
+import vn.impl.projectbase.R
 import vn.impl.projectbase.base.ui.BaseDialog
 import vn.impl.projectbase.base.ultils.extentions.gone
 import vn.impl.projectbase.base.ultils.extentions.visible
-import kotlinx.android.synthetic.main.dialog_error.*
-import vn.impl.projectbase.R
 
 class ErrorDialog : BaseDialog {
 
@@ -14,9 +14,9 @@ class ErrorDialog : BaseDialog {
         fun onConfirmOk()
     }
 
-    constructor(context: Context?) : super(context)
+    constructor(context: Context) : super(context)
 
-    constructor(context: Context?, themeId: Int) : super(context, themeId)
+    constructor(context: Context, themeId: Int) : super(context, themeId)
 
     private var onConfirmListener: OnConfirmListener? = null
 

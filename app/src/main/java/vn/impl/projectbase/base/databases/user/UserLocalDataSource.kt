@@ -1,5 +1,8 @@
 package vn.impl.projectbase.base.databases.user
 
+import io.reactivex.Observable
+import io.realm.Realm
+import io.realm.RealmConfiguration
 import vn.impl.projectbase.base.api.common.Result
 import vn.impl.projectbase.base.api.user.request.PostRequest
 import vn.impl.projectbase.base.api.user.response.GetResponse
@@ -9,9 +12,6 @@ import vn.impl.projectbase.base.entity.User
 import vn.impl.projectbase.base.repository.user.UserDataSource
 import vn.impl.projectbase.base.ultils.extentions.asListEntity
 import vn.impl.projectbase.base.ultils.rx.ReactivexSchedulers
-import io.reactivex.Observable
-import io.realm.Realm
-import io.realm.RealmConfiguration
 
 /**
  * @see https://academy.realm.io/posts/creating-a-reactive-data-layer-with-realm-and-rxjava2/

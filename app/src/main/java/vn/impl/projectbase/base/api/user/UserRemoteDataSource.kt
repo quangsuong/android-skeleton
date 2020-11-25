@@ -1,5 +1,6 @@
 package vn.impl.projectbase.base.api.user
 
+import io.reactivex.Observable
 import vn.impl.projectbase.base.api.common.Result
 import vn.impl.projectbase.base.api.common.retrofitResponseToResult
 import vn.impl.projectbase.base.api.user.request.PostRequest
@@ -8,7 +9,6 @@ import vn.impl.projectbase.base.api.user.response.PostResponse
 import vn.impl.projectbase.base.entity.User
 import vn.impl.projectbase.base.repository.user.UserDataSource
 import vn.impl.projectbase.base.ultils.rx.ReactivexSchedulers
-import io.reactivex.Observable
 
 class UserRemoteDataSource(
     private val userApi: UserApi,

@@ -1,7 +1,7 @@
 package vn.impl.projectbase.base.ultils.extentions;
 
-import vn.impl.projectbase.base.databases.common.RealmObjectToEntity
 import io.realm.RealmObject
+import vn.impl.projectbase.base.databases.common.RealmObjectToEntity
 
 fun <K, T : RealmObjectToEntity<K>> List<T>.asRealmObjectList(): List<RealmObject> {
     val newList = mutableListOf<RealmObject>()

@@ -1,21 +1,22 @@
 package vn.impl.projectbase.base.repository.user
 
 import android.util.Log
+import io.reactivex.Observable
 import vn.impl.projectbase.base.api.common.Result
 import vn.impl.projectbase.base.api.user.request.PostRequest
 import vn.impl.projectbase.base.api.user.response.GetResponse
 import vn.impl.projectbase.base.api.user.response.PostResponse
 import vn.impl.projectbase.base.entity.User
-import io.reactivex.Observable
 
 class UserRepository constructor(
-     val userLocalDataSource: UserDataSource,
-     val userRemoteDataSource: UserDataSource
+    val userLocalDataSource: UserDataSource,
+    val userRemoteDataSource: UserDataSource
 ) : UserDataSource {
 
     companion object {
         private val TAG = UserRepository::class.java.name
     }
+
     override fun getExample(id: Int): Observable<Result<GetResponse>> {
         Log.d(TAG, "getExample")
         return userRemoteDataSource.getExample(id)

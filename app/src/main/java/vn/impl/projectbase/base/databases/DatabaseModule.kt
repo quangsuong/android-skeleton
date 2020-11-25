@@ -1,10 +1,10 @@
 package vn.impl.projectbase.base.databases
 
 import android.content.Context
-import vn.impl.projectbase.base.ultils.extentions.getDeviceId
 import io.realm.RealmConfiguration
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
+import vn.impl.projectbase.base.ultils.extentions.getDeviceId
 
 val databaseModule = module {
     single { provideRealmDatabaseConfig(androidContext(), get(), get()) }
