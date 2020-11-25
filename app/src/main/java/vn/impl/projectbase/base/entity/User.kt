@@ -1,9 +1,9 @@
 package vn.impl.projectbase.base.entity
 
 import com.squareup.moshi.Json
+import io.realm.RealmObject
 import vn.impl.projectbase.base.databases.common.RealmObjectToEntity
 import vn.impl.projectbase.base.databases.user.RealmUser
-import io.realm.RealmObject
 
 open class User(
 

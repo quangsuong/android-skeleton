@@ -3,13 +3,13 @@ package vn.impl.projectbase.base.api
 import android.content.Context
 import android.util.Log
 import com.squareup.moshi.Moshi
-import vn.impl.projectbase.base.databases.user.UserLocalDataSource
-import vn.impl.projectbase.base.ultils.extentions.asListEntity
-import vn.impl.projectbase.base.ultils.extentions.getDeviceId
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import okhttp3.Interceptor
 import okhttp3.Response
+import vn.impl.projectbase.base.databases.user.UserLocalDataSource
+import vn.impl.projectbase.base.ultils.extentions.asListEntity
+import vn.impl.projectbase.base.ultils.extentions.getDeviceId
 import javax.inject.Inject
 
 class AppInterceptor @Inject constructor(

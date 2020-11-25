@@ -3,9 +3,11 @@ package vn.impl.projectbase.base.api
 import android.content.Context
 import com.readystatesoftware.chuck.api.ChuckCollector
 import com.readystatesoftware.chuck.api.ChuckInterceptor
+import com.readystatesoftware.chuck.api.RetentionManager
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
+import io.realm.RealmConfiguration
 import okhttp3.Cache
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -13,14 +15,11 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
-import java.util.concurrent.TimeUnit
-import javax.inject.Singleton
-import com.readystatesoftware.chuck.api.RetentionManager
+import vn.impl.projectbase.BuildConfig
 import vn.impl.projectbase.base.api.user.UserApi
 import vn.impl.projectbase.base.injection.BaseApi
-import io.realm.RealmConfiguration
-import vn.impl.projectbase.BuildConfig
-
+import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 
 @Module
 class ApiModule(private val baseUrl: String) {
@@ -31,7 +30,7 @@ class ApiModule(private val baseUrl: String) {
         private const val CACHE_SIZE = 10L * 1024L * 1024L
         private const val TIME_OUT = 60L
 
-        private const val CHUCK_MAX_CONTENT_LENGTH=250000L
+        private const val CHUCK_MAX_CONTENT_LENGTH = 250000L
     }
 
     @Provides
@@ -77,10 +76,11 @@ class ApiModule(private val baseUrl: String) {
     @Provides
     @Singleton
     @BaseApi
-    fun provideOkHttpClient(context: Context,
-                            cache: Cache,
-                            @BaseApi loggingInterceptor: HttpLoggingInterceptor,
-                            @BaseApi appInterceptor: Interceptor
+    fun provideOkHttpClient(
+        context: Context,
+        cache: Cache,
+        @BaseApi loggingInterceptor: HttpLoggingInterceptor,
+        @BaseApi appInterceptor: Interceptor
     ): OkHttpClient {
 
         // Collector

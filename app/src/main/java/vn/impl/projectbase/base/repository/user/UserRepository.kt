@@ -1,6 +1,7 @@
 package vn.impl.projectbase.base.repository.user
 
 import android.util.Log
+import io.reactivex.Observable
 import vn.impl.projectbase.base.api.common.Result
 import vn.impl.projectbase.base.api.user.request.PostRequest
 import vn.impl.projectbase.base.api.user.response.GetResponse
@@ -8,7 +9,6 @@ import vn.impl.projectbase.base.api.user.response.PostResponse
 import vn.impl.projectbase.base.entity.User
 import vn.impl.projectbase.base.injection.SourceLocal
 import vn.impl.projectbase.base.injection.SourceRemote
-import io.reactivex.Observable
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -21,6 +21,7 @@ class UserRepository @Inject constructor(
     companion object {
         private val TAG = UserRepository::class.java.name
     }
+
     override fun getExample(id: Int): Observable<Result<GetResponse>> {
         Log.d(TAG, "getExample")
         return userRemoteDataSource.getExample(id)

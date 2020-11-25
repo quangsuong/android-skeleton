@@ -1,13 +1,13 @@
 package vn.impl.projectbase.base.api.user
 
-import vn.impl.projectbase.base.api.user.request.PostRequest
-import vn.impl.projectbase.base.api.user.response.GetResponse
-import vn.impl.projectbase.base.api.user.response.PostResponse
 import io.reactivex.Observable
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
+import vn.impl.projectbase.base.api.user.request.PostRequest
+import vn.impl.projectbase.base.api.user.response.GetResponse
+import vn.impl.projectbase.base.api.user.response.PostResponse
 
 interface UserApi {
 

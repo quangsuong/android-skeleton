@@ -7,13 +7,13 @@ import android.view.Window
 
 abstract class BaseDialog : Dialog {
 
-    constructor(context: Context?) : super(context)
-    constructor(context: Context?, themeId: Int) : super(context, themeId)
+    constructor(context: Context) : super(context)
+    constructor(context: Context, themeId: Int) : super(context, themeId)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
-        window.setBackgroundDrawableResource(android.R.color.transparent)
+        window?.setBackgroundDrawableResource(android.R.color.transparent)
         setCancelable(isCancelable)
         initView()
     }

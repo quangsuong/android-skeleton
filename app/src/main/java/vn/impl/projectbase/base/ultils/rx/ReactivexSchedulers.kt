@@ -7,5 +7,5 @@ interface ReactivexSchedulers {
 
     fun androidMainThread(): Scheduler
 
-    fun writerScheduler():Scheduler
+    fun writerScheduler(): Scheduler
 }

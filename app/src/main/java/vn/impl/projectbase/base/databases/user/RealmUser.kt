@@ -1,9 +1,9 @@
 package vn.impl.projectbase.base.databases.user
 
-import vn.impl.projectbase.base.databases.common.RealmObjectToEntity
-import vn.impl.projectbase.base.entity.User
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
+import vn.impl.projectbase.base.databases.common.RealmObjectToEntity
+import vn.impl.projectbase.base.entity.User
 
 open class RealmUser(
 

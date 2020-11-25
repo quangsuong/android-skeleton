@@ -24,8 +24,10 @@ class ApplicationModule {
     @Singleton
     @Provides
     fun provideAppConfigPreference(context: Context): AppConfigPreferences {
-        val sharedPreferences = context.getSharedPreferences("impl.vn.timesheet.shared_preferences",
-            Context.MODE_PRIVATE)
+        val sharedPreferences = context.getSharedPreferences(
+            "impl.vn.timesheet.shared_preferences",
+            Context.MODE_PRIVATE
+        )
         return AppConfigPreferences(sharedPreferences)
     }
 

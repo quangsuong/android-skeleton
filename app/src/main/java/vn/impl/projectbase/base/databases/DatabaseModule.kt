@@ -3,8 +3,8 @@ package vn.impl.projectbase.base.databases
 import android.content.Context
 import dagger.Module
 import dagger.Provides
-import vn.impl.projectbase.base.ultils.extentions.getDeviceId
 import io.realm.RealmConfiguration
+import vn.impl.projectbase.base.ultils.extentions.getDeviceId
 import javax.inject.Singleton
 
 @Module
@@ -25,8 +25,8 @@ class DatabaseModule {
         realmDatabaseMigration: RealmDatabaseMigration
     ): RealmConfiguration {
         val deviceId = context.getDeviceId().toByteArray()
-        val commonKey= "pom5ufap1as2zxce1093common_key-impl-vn-timesheet".toByteArray()
-        val key=deviceId+commonKey
+        val commonKey = "pom5ufap1as2zxce1093common_key-impl-vn-timesheet".toByteArray()
+        val key = deviceId + commonKey
         return RealmConfiguration.Builder()
             .name(REALM_DATABASE_NAME)
             .schemaVersion(REALM_DATABASE_VERSION)

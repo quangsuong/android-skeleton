@@ -4,12 +4,12 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import io.reactivex.disposables.CompositeDisposable
 import vn.impl.projectbase.base.api.common.ResultsObserver
 import vn.impl.projectbase.base.api.user.response.GetResponse
 import vn.impl.projectbase.base.entity.User
 import vn.impl.projectbase.base.repository.user.UserRepository
 import vn.impl.projectbase.base.ultils.extentions.plusAssign
-import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 class LoginViewModel @Inject constructor(

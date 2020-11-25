@@ -6,9 +6,9 @@ import androidx.multidex.MultiDexApplication
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
-import vn.impl.projectbase.base.api.ApiModule
 import io.realm.Realm
 import vn.impl.projectbase.R
+import vn.impl.projectbase.base.api.ApiModule
 import javax.inject.Inject
 
 
@@ -23,14 +23,14 @@ class MainApplication : MultiDexApplication(), HasActivityInjector {
         Realm.init(this)
 
         DaggerApplicationComponent.builder()
-                .application(this)
-                .apiModule(ApiModule(getString(R.string.base_url)))
-                .build()
-                .inject(this)
+            .application(this)
+            .apiModule(ApiModule(getString(R.string.base_url)))
+            .build()
+            .inject(this)
 
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration?) {
+    override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
     }
 

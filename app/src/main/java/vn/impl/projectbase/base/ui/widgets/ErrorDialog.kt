@@ -14,9 +14,9 @@ class ErrorDialog : BaseDialog {
         fun onConfirmOk()
     }
 
-    constructor(context: Context?) : super(context)
+    constructor(context: Context) : super(context)
 
-    constructor(context: Context?, themeId: Int) : super(context, themeId)
+    constructor(context: Context, themeId: Int) : super(context, themeId)
 
     private var onConfirmListener: OnConfirmListener? = null
 
