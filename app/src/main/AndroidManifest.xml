@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="vn.impl.projectbase">
+    package="com.projectbase">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".mainapp.application.MainApplication"
+        android:name="com.projectbase.mainapp.application.MainApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
+        android:networkSecurityConfig="@xml/network_security_config"
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:targetApi="n">
         <activity
-            android:name=".mainapp.ui.splash.SplashActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name="com.projectbase.mainapp.main.splash.SplashActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,12 +28,14 @@
         </activity>
 
         <activity
-            android:name=".mainapp.ui.mainapp.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name="com.projectbase.mainapp.main.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:exported="true"/>
 
         <activity
-            android:name=".mainapp.ui.login.LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name="com.projectbase.mainapp.main.login.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:exported="true"/>
 
     </application>
 

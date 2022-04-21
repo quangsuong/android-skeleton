@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mainapp.ui.mainapp.MainActivity">
+    tools:context="com.projectbase.mainapp.main.MainActivity">
 
     <FrameLayout
         android:id="@+id/container"
