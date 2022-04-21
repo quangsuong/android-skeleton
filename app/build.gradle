@@ -1,24 +1,22 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
-
 apply plugin: 'kotlin-kapt'
 
-apply plugin: 'realm-android'
-
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
 
     defaultConfig {
-        applicationId "vn.impl.projectbase"
         minSdkVersion 23
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
     }
 
     compileOptions {
@@ -30,32 +28,48 @@ android {
         abortOnError false
     }
 
-    buildFeatures {
-        dataBinding false
+    signingConfigs {
+        debug {
+            storeFile file("../keystore/keystore-debug")
+            storePassword "abc"
+            keyAlias "abc"
+            keyPassword "abc"
+        }
+
+        release {
+            storeFile file("../keystore/keystore-release")
+            storePassword "abc"
+            keyAlias "abc"
+            keyPassword "abc"
+        }
     }
 
     buildTypes {
         debug {
             minifyEnabled false
 
-            versionNameSuffix "-" + getDate()
+            signingConfig signingConfigs.debug
         }
 
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.release
         }
     }
 
     flavorDimensions 'root'
     productFlavors {
         product {
+            applicationId "com.alobridge.projectbase.pro"
             dimension 'root'
         }
 
         dev {
+            applicationId "com.alobridge.projectbase.dev"
             dimension 'root'
-            applicationIdSuffix '.dev'
         }
     }
 
@@ -67,53 +81,64 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$rootProject.ext.kotlin_version"
-    implementation "org.jetbrains.kotlin:kotlin-reflect:$rootProject.ext.kotlin_version"
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.10'
 
-    implementation "androidx.appcompat:appcompat:$rootProject.ext.lib_versions.appcompat"
-    implementation "androidx.constraintlayout:constraintlayout:$rootProject.ext.lib_versions.constraint_layout"
-    implementation "androidx.multidex:multidex:$rootProject.ext.lib_versions.multidex"
-    implementation "com.google.android.material:material:$rootProject.ext.lib_versions.material"
-    implementation "androidx.annotation:annotation:$rootProject.ext.lib_versions.annotation"
-    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.ext.lib_versions.lifecycle_extensions"
+    implementation "androidx.multidex:multidex:2.0.1"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    implementation "com.google.android.material:material:1.5.0"
 
-    //rx
-    implementation "io.reactivex.rxjava2:rxjava:$rootProject.ext.lib_versions.rxjava"
-    implementation "io.reactivex.rxjava2:rxkotlin:$rootProject.ext.lib_versions.rxkotlin"
-    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.ext.lib_versions.rxandroid"
+    //Koin
+    def koin_version = '2.1.6'
+    implementation "org.koin:koin-android:$koin_version"
+    implementation "org.koin:koin-android-viewmodel:$koin_version"
+    implementation "org.koin:koin-android-scope:$koin_version"
 
-    //koin
-    implementation "org.koin:koin-androidx-viewmodel:$rootProject.ext.lib_versions.koin"
-    implementation "org.koin:koin-core-ext:$rootProject.ext.lib_versions.koin"
+    //ViewModel + LiveData
+    def lifecycle_version = '2.2.0'
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 
-    //retrofit2
-    implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.lib_versions.retrofit2"
-    implementation "com.squareup.retrofit2:converter-moshi:$rootProject.ext.lib_versions.retrofit2"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.ext.lib_versions.retrofit2"
+    //Rx
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.9'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
-    //moshi
-    implementation "com.squareup.moshi:moshi:$rootProject.ext.lib_versions.moshi"
-    implementation "com.squareup.moshi:moshi-kotlin:$rootProject.ext.lib_versions.moshi"
+    //Retrofit
+    def retrofit_version = '2.7.2'
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
 
-    //okhttp3
-    implementation "com.squareup.okhttp3:okhttp:$rootProject.ext.lib_versions.okhttp3"
-    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.lib_versions.okhttp3"
+    //OkHttp
+    def okhttp_version = '4.9.0'
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
 
-    //chucker
-    debugImplementation "fr.o80.chucker:library-no-op:$rootProject.ext.lib_versions.chucker"
-    releaseImplementation "fr.o80.chucker:library-no-op:$rootProject.ext.lib_versions.chucker"
+    //Moshi
+    def moshi_version = '1.8.0'
+    implementation "com.squareup.moshi:moshi:$moshi_version"
+    implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
 
-    //glide
-    implementation "com.github.bumptech.glide:glide:$rootProject.ext.lib_versions.glide"
-    kapt "com.github.bumptech.glide:compiler:$rootProject.ext.lib_versions.glide"
+    //Chucker
+    def chucker_version = '3.5.2'
+    debugImplementation "com.github.ChuckerTeam.Chucker:library:$chucker_version"
+    releaseImplementation "com.github.ChuckerTeam.Chucker:library-no-op:$chucker_version"
+
+    //Room
+    def room_version = '2.4.0'
+    implementation "androidx.room:room-rxjava2:$room_version"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
 
-    testImplementation "junit:junit:$rootProject.ext.lib_versions.junit"
-    androidTestImplementation "androidx.test:runner:$rootProject.ext.lib_versions.test_runner"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.ext.lib_versions.espresso_core"
-}
-
-static def getDate() {
-    def date = new Date()
-    return date.format("yyyyMMddhhmm")
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test:runner:1.4.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
