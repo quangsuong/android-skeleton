@@ -17,20 +17,15 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="n">
         <activity
-            android:name="com.projectbase.mainapp.main.splash.SplashActivity"
+            android:name=".mainapp.main.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"
+            android:launchMode="singleTask"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name="com.projectbase.mainapp.main.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true"/>
 
         <activity
             android:name="com.projectbase.mainapp.main.login.LoginActivity"
