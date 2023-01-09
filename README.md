@@ -1,7 +1,7 @@
 # android-skeleton
 Project Base
 
-- We can generate an new app from this base by CLI: bash gen-new-app.sh packageName appName
+- We can generate a new app from this base by CLI: bash gen-new-app.sh packageName appName
  + example of packageName: com.vnd.alobridge
  + example of appName: ScretApp
  
